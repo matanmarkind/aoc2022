@@ -1,7 +1,7 @@
 #![feature(iter_array_chunks)]
 
 fn letter_to_index(c: char) -> u64 {
-    // [1-52]
+    // [0-51]
     match c {
         'a'..='z' => (c as u64) - ('a' as u64),
         'A'..='Z' => (c as u64) - ('A' as u64) + 26,
