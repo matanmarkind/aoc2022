@@ -114,17 +114,6 @@ impl<'a, T> DoubleEndedIterator for ColumnIterator<'a, T> {
     }
 }
 
-impl<'a, T> Clone for ColumnIterator<'a, T> {
-    fn clone(&self) -> Self {
-        ColumnIterator {
-            grid: &self.grid,
-            front_row: self.front_row,
-            end_row: self.end_row,
-            column: self.column,
-        }
-    }
-}
-
 impl<'a, T> DoubleEndedIterator for RowIterator<'a, T> {
     fn next_back(&mut self) -> Option<&'a T> {
         if self.end_column <= self.front_column {
@@ -148,17 +137,6 @@ impl<'a, T> Iterator for RowIterator<'a, T> {
         let column = self.front_column;
         self.front_column += 1;
         Some(&self.grid[(self.row, column)])
-    }
-}
-
-impl<'a, T> Clone for RowIterator<'a, T> {
-    fn clone(&self) -> Self {
-        RowIterator {
-            grid: &self.grid,
-            row: self.row,
-            front_column: self.front_column,
-            end_column: self.end_column,
-        }
     }
 }
 
